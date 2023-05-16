@@ -478,3 +478,6 @@ $RECYCLE.BIN/
 
 # Enviroment variables
 .env
+
+# Database data
+.appsettings.Development.json
