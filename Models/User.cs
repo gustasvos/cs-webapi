@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StoreMysql.Models.Validators;
 
 namespace StoreMysql.Models
 {
@@ -9,17 +10,20 @@ namespace StoreMysql.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "This field can not be blank")]
-        [StringLength(128, MinimumLength = 2, ErrorMessage = "Must have at least 3 characteres")]
+        [Required]
+        [StringLength(128)]
         public string FirstName { get; set; }
 
         [StringLength(128)]
         public string? LastName { get; set; }
         
-        [Required(ErrorMessage = "Email is required")]
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Birth date is required")]
+        [Required]
+        [DateValidation]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
     }
